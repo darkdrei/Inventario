@@ -25,7 +25,7 @@ SECRET_KEY = 'a^*=tu5mpuaw3jya)_s@l2$%hxrryocx8qd#z#otxiu!_mq6em'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,13 +34,15 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'material.admin',
+    'exileui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'inventario'
+    'inventario',
+    'empleados'
 ]
 
 MIDDLEWARE = [
