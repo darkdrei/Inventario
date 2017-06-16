@@ -159,7 +159,7 @@ class Entrada(Salida):
 
 class ComposicionProducto(models.Model):
     producto = models.ForeignKey(Activo)
-    desc = models.CharField(max_length=300, null=True, blank=True)
+    desc = models.CharField(max_length=300, null=True, blank=True, verbose_name="Descripción")
     estado = models.BooleanField(default=True)
 
     class Meta:
