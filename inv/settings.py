@@ -34,15 +34,19 @@ INSTALLED_APPS = [
     'material',
     'material.frontend',
     'material.admin',
-    'exileui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'nested_admin',
     'inventario',
-    'empleados'
+    'empleados',
+    'daterange_filter',
+    'compra',
+    'cliente',
+    'venta'
 ]
 
 MIDDLEWARE = [
@@ -80,9 +84,17 @@ WSGI_APPLICATION = 'inv.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+'default': {
+'ENGINE': 'django.db.backends.sqlite3',
+'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+},
+    'default2': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'inventario',
+            'USER': 'postgres',
+            'PASSWORD': 'Exile*74522547',
+            'HOST': '104.236.33.228',
+            'POST': '5432'
     }
 }
 

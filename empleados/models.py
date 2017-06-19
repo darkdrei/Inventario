@@ -4,6 +4,7 @@ from django.db import models
 import re
 from django.core import validators
 from django.contrib.auth.models import User
+from inventario import models as inventario
 
 
 # Create your models
@@ -55,9 +56,11 @@ class Empleado(Persona):
 
 
 class Proveedor(Persona):
+    articulos = models.ManyToManyField(inventario.Activo)
+
     class Meta:
-        verbose_name = "Recepcionistas"
-        verbose_name_plural = "Recepcionistas"
+        verbose_name = "Proveedor"
+        verbose_name_plural = "Proveedores"
     # end class
 # end class
 
@@ -73,7 +76,7 @@ class Cajero(Persona):
 
 class Administrador(Persona):
     departamento = models.ForeignKey(Departamento)
-    
+
     class Meta:
         verbose_name = "Administrador"
         verbose_name_plural = "Administradores"
