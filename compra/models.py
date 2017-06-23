@@ -8,7 +8,6 @@ from inventario import models as inventario
 
 
 class Compra(models.Model):
-    proveedor = models.ForeignKey(empleado.Proveedor)
     articulo = models.ForeignKey(inventario.Activo)
     cantidad = models.FloatField(default=0)
     valor_unitario = models.FloatField(default=0,verbose_name='Precio unitario')

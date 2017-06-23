@@ -12,18 +12,20 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('inventario', '0001_initial'),
         ('empleados', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Ciente',
+            name='Proveedor',
             fields=[
                 ('persona_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='empleados.Persona')),
+                ('articulos', models.ManyToManyField(to='inventario.Activo')),
             ],
             options={
-                'verbose_name': 'Cliente',
-                'verbose_name_plural': 'Clientes',
+                'verbose_name': 'Proveedor',
+                'verbose_name_plural': 'Proveedores',
             },
             bases=('empleados.persona',),
             managers=[

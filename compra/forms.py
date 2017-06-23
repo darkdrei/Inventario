@@ -5,7 +5,7 @@ import models
 class CompraForm(forms.ModelForm):
     class Meta:
         model = models.Compra
-        fields = ['proveedor','articulo','cantidad','valor_unitario','total','iva','valor_iva','aprobado']
+        fields = ['articulo','cantidad','valor_unitario','total','iva','valor_iva','aprobado']
         exclude = ['estado','paga','realizacion']
     #end class
 #end class

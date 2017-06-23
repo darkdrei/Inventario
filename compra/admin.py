@@ -8,8 +8,8 @@ import forms
 
 
 class CompraAdmin(admin.ModelAdmin):
-    list_display = ['proveedor', 'articulo','cantidad','valor_unitario']
-    search_fields = ['proveedor__identificacion', 'proveedor__first_name','proveedor__last_name','articulo__codigo', 'articulo__nombre','cantidad','valor_unitario']
+    list_display = ['articulo','cantidad','valor_unitario']
+    search_fields = []
     form = forms.CompraForm
 #end class
 

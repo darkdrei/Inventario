@@ -4,10 +4,28 @@ from django.db import models
 import re
 from django.core import validators
 from django.contrib.auth.models import User
-from inventario import models as inventario
-
 
 # Create your models
+class UnidadNegocio(models.Model):
+    nombre = models.CharField(max_length=120)
+    descripcion = models.CharField(max_length=300, null=True, blank=True)
+    estado= models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Unidad de negocio"
+        verbose_name_plural = "Unidades de negocios"
+    # end class
+
+    def __unicode__(self):
+        return u'%s' % (self.nombre)
+    # end def
+
+    def __str__(self):
+        return u'%s' % (self.nombre)
+    # end def
+#end class
+
+
 class Departamento(models.Model):
     nombre = models.CharField(max_length=120)
     descripcion = models.CharField(max_length=300, null=True, blank=True)
@@ -30,7 +48,7 @@ class Departamento(models.Model):
 
 class Persona(User):
     identificacion = models.CharField(max_length=20, unique=True, validators=[validators.RegexValidator(re.compile('^([1-9]+[0-9]*){7,20}$'), ('No valida'), 'invalid')])
-    direccion = models.CharField(max_length=300)
+    direccion = models.CharField(max_length=300, null=True, blank=True)
     nacimiento = models.DateField(verbose_name="Fecha de nacimiento", null=True,blank=True)
     telefono = models.CharField(max_length=10, null=True, blank=True)
     imagen = models.ImageField(upload_to="avatar", null=True, blank=True)
@@ -46,7 +64,7 @@ class Persona(User):
 
 
 class Empleado(Persona):
-    departamento = models.ForeignKey(Departamento)
+    departamento = models.ForeignKey(Departamento,  null=True, blank=True)
 
     class Meta:
         verbose_name = "Trabajador"
@@ -55,18 +73,10 @@ class Empleado(Persona):
 # end class
 
 
-class Proveedor(Persona):
-    articulos = models.ManyToManyField(inventario.Activo)
-
-    class Meta:
-        verbose_name = "Proveedor"
-        verbose_name_plural = "Proveedores"
-    # end class
-# end class
-
-
 class Cajero(Persona):
-    departamento = models.ForeignKey(Departamento)
+    negocio = models.ForeignKey(UnidadNegocio, verbose_name='Unidad de negocio')
+    departamento = models.ForeignKey(Departamento,  null=True, blank=True)
+    autenticate = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = "Cajero"
@@ -75,7 +85,7 @@ class Cajero(Persona):
 # end class
 
 class Administrador(Persona):
-    departamento = models.ForeignKey(Departamento)
+    departamento = models.ForeignKey(Departamento,  null=True, blank=True)
 
     class Meta:
         verbose_name = "Administrador"

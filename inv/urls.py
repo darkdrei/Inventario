@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
+from empleados import views as empleado
 urlpatterns = [
+    url(r'^admin/logout/$', empleado.Logout.as_view()),
+    url(r'^$', empleado.Home.as_view()),
     url(r'^admin/', admin.site.urls),
     url(r'^nested_admin/', include('nested_admin.urls')),
 ]

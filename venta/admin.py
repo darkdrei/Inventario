@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.contrib import admin
 import models
 import forms
+from inventario import models as inventario
 # Register your models here.
 
 class DetalleInline(admin.StackedInline):
@@ -17,6 +18,24 @@ class FacturaAdmin(admin.ModelAdmin):
     search_fields = ['comprador','fecha','subtotal','iva','impoconsumo','total','creador','paga']
     form = forms.FacturaForm
     inlines = [DetalleInline,]
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        total = 0
+        for s in models.Detalle.objects.filter(factura__id=obj.id):
+            articulo = inventario.Activo.objects.filter(id=s.articulo.id).first()
+            if s.cantidad > s.articulo.existencias :
+                s.cantidad = s.articulo.existencias
+            #end if
+            if articulo:
+                articulo.existencias = articulo.existencias - s.cantidad
+                articulo.save()
+                total = s.cantidad * articulo.precio_venta
+            #end if
+        # end for
+        obj.total = total
+        obj.save()
+    # end if
 #end class
 
 

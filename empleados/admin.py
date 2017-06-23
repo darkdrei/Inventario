@@ -9,25 +9,11 @@ import forms
 # Register your models here.
 
 
-class ProveedorAdmin(nested_admin.NestedModelAdmin):
-    list_display = ('identificacion', 'email', 'first_name', 'last_name',
-                    'direccion', 'telefono', 'nacimiento')
-    list_filter =[('nacimiento', DateRangeFilter)]
-    search_fields = (list_display)
-    filter_horizontal = ('articulos',)
-    form = forms.ProveedorForm
-
-    def get_form(self, request, obj=None, *args, **kwargs):
-        if obj:
-            kwargs['form'] = forms.ProveedorFormEdit
-        # end if
-        return super(ProveedorAdmin, self).get_form(request, obj, *args, **kwargs)
-    # end def
-
-    class Media:
-        js = ('/static/empleados/js/empleados.js',)
-    # end class
-# end class
+class UnidadNegocioAdmin(admin.ModelAdmin):
+    list_display= ['nombre','descripcion','estado']
+    search_fields = ['nombre','descripcion','estado']
+    form = forms.UnidadNegocioForm
+#end class
 
 
 class CajeroAdmin(nested_admin.NestedModelAdmin):
@@ -46,9 +32,10 @@ class CajeroAdmin(nested_admin.NestedModelAdmin):
 
 
 class CajeroAdmin(nested_admin.NestedModelAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name',
+    list_display = ('username', 'email', 'first_name', 'last_name','negocio',
                     'direccion', 'telefono', 'nacimiento')
-    search_fields = list_display
+    search_fields = ('username', 'email', 'first_name', 'last_name','negocio__nombre',
+                    'direccion', 'telefono', 'nacimiento')
     form = forms.CajeroForm
 
     def get_form(self, request, obj=None, *args, **kwargs):
@@ -76,6 +63,6 @@ class AdministradorAdmin(nested_admin.NestedModelAdmin):
 
 
 # Register your models here.
-admin.site.register(models.Proveedor, ProveedorAdmin)
 admin.site.register(models.Administrador, AdministradorAdmin)
 admin.site.register(models.Cajero, CajeroAdmin)
+admin.site.register(models.UnidadNegocio, UnidadNegocioAdmin)

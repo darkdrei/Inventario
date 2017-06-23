@@ -21,11 +21,17 @@ class Factura(models.Model):
     estado = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return '%s %s' % (self.comprador.first_name, self.comprador.last_name)
+        if self.comprador:
+            return '%s %s' % (self.comprador.first_name, self.comprador.last_name)
+        #end if
+        return 'No cliente registrado para venta'
     # end def
 
     def __str__(self):
-        return '%s %s' % (self.comprador.first_name, self.comprador.last_name)
+        if self.comprador:
+            return '%s %s' % (self.comprador.first_name, self.comprador.last_name)
+        #end if
+        return 'No cliente registrado para venta'
     # end def
 
     class Meta:
@@ -43,11 +49,17 @@ class Detalle(models.Model):
     total = models.FloatField(default=0)
 
     def __unicode__(self):
-        return '%s %s' % (self.factura.comprador.first_name, self.factura.comprador.last_name)
+        if self.factura.comprador:
+            return '%s %s' % (self.factura.comprador.first_name, self.factura.comprador.last_name)
+        #end if
+        return 'No cliente registrado para venta'
     # end def
 
     def __str__(self):
-        return '%s %s' % (self.factura.comprador.first_name, self.factura.comprador.last_name)
+        if self.factura.comprador:
+            return '%s %s' % (self.factura.comprador.first_name, self.factura.comprador.last_name)
+        #end if
+        return 'No cliente registrado para venta'
     # end def
 
     class Meta:
