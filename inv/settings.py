@@ -94,8 +94,8 @@ DATABASES = {
             'POST': '5432'
     },
     'default2': {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -137,4 +137,9 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/Inventario/static/'
+
 LOGOUT_URL = "/accounts/login/"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/www/Inventario/media/'
