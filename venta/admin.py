@@ -18,6 +18,7 @@ class FacturaAdmin(admin.ModelAdmin):
     search_fields = ['comprador','fecha','subtotal','iva','impoconsumo','total','creador','paga']
     form = forms.FacturaForm
     inlines = [DetalleInline,]
+    icon = '<i class="material-icons">receipt</i>'
 
     def save_model(self, request, obj, form, change):
         obj.save()
@@ -43,6 +44,7 @@ class DetalleAdmin(admin.ModelAdmin):
     list_display = ['factura','articulo','cantidad','valor_unitario','total']
     search_fields = ['factura','articulo','cantidad','valor_unitario','total']
     form = forms.DetalleForm
+    icon = '<i class="material-icons">assignment</i>'
 #end class
 
 

@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class EmpleadosConfig(AppConfig):
     name = 'empleados'
+    icon = '<i class="material-icons">group</i>'

@@ -8,10 +8,11 @@ import forms
 
 
 class CompraAdmin(admin.ModelAdmin):
-    list_display = ['articulo','cantidad','valor_unitario']
+    list_display = ['articulo', 'cantidad', 'valor_unitario']
     search_fields = []
     form = forms.CompraForm
-#end class
+    icon = '<i class="material-icons">shop</i>'
+# end class
 
 
 admin.site.register(models.Compra, CompraAdmin)

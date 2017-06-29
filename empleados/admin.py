@@ -13,6 +13,7 @@ class UnidadNegocioAdmin(admin.ModelAdmin):
     list_display= ['nombre','descripcion','estado']
     search_fields = ['nombre','descripcion','estado']
     form = forms.UnidadNegocioForm
+    icon = '<i class="material-icons">local_atm</i>'
 #end class
 
 
@@ -37,6 +38,7 @@ class CajeroAdmin(nested_admin.NestedModelAdmin):
     search_fields = ('username', 'email', 'first_name', 'last_name','negocio__nombre',
                     'direccion', 'telefono', 'nacimiento')
     form = forms.CajeroForm
+    icon = '<i class="material-icons">account_box</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:
@@ -52,6 +54,7 @@ class AdministradorAdmin(nested_admin.NestedModelAdmin):
                     'direccion', 'telefono', 'nacimiento')
     search_fields = list_display
     form = forms.AdministradorForm
+    icon = '<i class="material-icons">account_circle</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:

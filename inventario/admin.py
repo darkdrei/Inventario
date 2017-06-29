@@ -11,6 +11,7 @@ class ActivoAdmin(admin.ModelAdmin):
     list_display= ['codigo','nombre','presentacion','tipo','existencias','negocio','precio_venta']
     search_fields =['codigo','nombre','descripcion','presentacion__nombre','negocio__nombre']
     form = forms.ArticuloForm
+    icon = '<i class="material-icons">widgets</i>'
 
     def get_queryset(self, request):
         queryset = super(ActivoAdmin, self).get_queryset(request)
@@ -23,6 +24,7 @@ class CategoriaAdmin(admin.ModelAdmin):
     list_display= ['nombre','descripcion','estado']
     search_fields = ['nombre','descripcion','estado']
     form = forms.CategoriaForm
+    icon = '<i class="material-icons">label</i>'
 #end class
 
 
@@ -30,6 +32,7 @@ class UnidadAdmin(admin.ModelAdmin):
     list_display= ['nombre','descripcion','estado']
     search_fields = ['nombre','descripcion','estado']
     form = forms.UnidadForm
+    icon = '<i class="material-icons">widgets</i>'
 #end class
 
 
@@ -59,6 +62,7 @@ class SalidaAdmin(admin.ModelAdmin):
     list_display= ['activo','cantidad','valor', 'total','estado']
     search_fields = ['activo__nombre','estado']
     form = forms.SalidaForm
+    icon = '<i class="material-icons">arrow_back</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:
@@ -73,6 +77,7 @@ class EntredaAdmin(admin.ModelAdmin):
     list_display= ['activo','cantidad','cantidad_e', 'realizacion','estado']
     search_fields = ['activo','cantidad','valor','estado','total']
     form = forms.EntradaForm
+    icon = '<i class="material-icons">arrow_forward</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:

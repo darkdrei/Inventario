@@ -12,7 +12,8 @@ class ClienteAdmin(admin.ModelAdmin):
                     'direccion', 'telefono', 'nacimiento']
     search_fields = ['identificacion', 'email', 'first_name', 'last_name',
                     'direccion', 'telefono', 'nacimiento']
-
+    icon = '<i class="material-icons">accessibility</i>'
+    
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:
             kwargs['form'] = forms.ProveedorFormEdit

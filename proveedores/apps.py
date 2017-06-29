@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class ProveedoresConfig(AppConfig):
     name = 'proveedores'
+    icon = '<i class="material-icons">local_shipping</i>'

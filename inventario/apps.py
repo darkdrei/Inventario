@@ -6,3 +6,4 @@ from django.apps import AppConfig
 
 class InventarioConfig(AppConfig):
     name = 'inventario'
+    icon = '<i class="material-icons">work</i>'

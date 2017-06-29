@@ -41,13 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nested_admin',
-    'inventario',
-    'empleados',
+    'inventario.apps.InventarioConfig',
+    'empleados.apps.EmpleadosConfig',
     'daterange_filter',
-    'compra',
-    'cliente',
-    'venta',
-    'proveedores'
+    'compra.apps.CompraConfig',
+    'cliente.apps.ClienteConfig',
+    'venta.apps.VentaConfig',
+    'proveedores.apps.ProveedoresConfig'
 ]
 
 MIDDLEWARE = [

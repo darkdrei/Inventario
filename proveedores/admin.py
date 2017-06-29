@@ -16,6 +16,7 @@ class ProveedorAdmin(nested_admin.NestedModelAdmin):
     search_fields = (list_display)
     filter_horizontal = ('articulos',)
     form = forms.ProveedorForm
+    icon = '<i class="material-icons">local_shipping</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:
