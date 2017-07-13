@@ -19,6 +19,7 @@ class Factura(models.Model):
     creador = models.ForeignKey(User, null=True, blank=True, related_name='creador_factura')
     paga = models.BooleanField(default=False)
     estado = models.BooleanField(default=True)
+    pago = models.IntegerField(choices=((1,'Contado'),(2,'Credito')), verbose_name='Tipo de pago')
 
     def __unicode__(self):
         if self.comprador:
