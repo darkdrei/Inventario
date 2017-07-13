@@ -75,12 +75,13 @@ class Activo(models.Model):
     tipo = models.IntegerField(choices=((1,'Comercializar'),(2,'Compuesto'),(3,'Materia prima')))
     existencias = models.FloatField(default=0)
     negocio = models.ForeignKey(empleado.UnidadNegocio)
+    minimo = models.FloatField(default=0, verbose_name='Stock minimo')
     iva = models.BooleanField(default=False, verbose_name="Grabado con iva")
     ipoconsumo = models.BooleanField(default=False, verbose_name="Impoconsumo")
     precio_venta = models.FloatField(verbose_name='Precio de venta')
     adquisicion = models.FloatField(verbose_name='Precio de compra')
-    rentabilidad = models.FloatField(verbose_name='Porcentaje de rentabilidad', default=0)
-    rentabilidad_ingreso = models.FloatField(verbose_name='Porcentaje de rentabilidad sobre ingreso', default=0)
+    rentabilidad = models.FloatField(verbose_name='Porcentaje de rentabilidad',default=0,null=True,blank=True)
+    rentabilidad_ingreso = models.FloatField(verbose_name='Porcentaje de rentabilidad sobre ingreso',default=0,null=True,blank=True)
     estado = models.BooleanField(default=True)
 
     class Meta:
