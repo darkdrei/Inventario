@@ -22,7 +22,7 @@ class ClienteForm(UserCreationForm):
     class Meta:
         model = models.Ciente
         fields = ['username', 'password1', 'password2', 'email', 'first_name',
-                  'last_name', 'identificacion', 'direccion', 'telefono', 'nacimiento', 'imagen']
+                  'last_name', 'identificacion', 'direccion', 'telefono', 'credito','nacimiento', 'imagen']
     # end class
 
     class Media:
