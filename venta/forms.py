@@ -7,7 +7,7 @@ from inventario import models as inventario
 class FacturaForm(forms.ModelForm):
     class Meta:
         model = models.Factura
-        fields = ['comprador','fecha','subtotal','total','paga','estado']
+        fields = ['comprador','fecha','subtotal','total','paga','pago','estado']
         exclude = []
     #end class
 
