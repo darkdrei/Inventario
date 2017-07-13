@@ -8,10 +8,11 @@ import models
 
 
 class ClienteAdmin(admin.ModelAdmin):
-    list_display = ['identificacion', 'email', 'first_name', 'last_name',
-                    'direccion', 'telefono', 'credito','nacimiento']
+    list_display = ['identificacion', 'first_name', 'last_name','email',
+                     'telefono', 'credito','nacimiento']
     search_fields = ['identificacion', 'email', 'first_name', 'last_name',
                     'direccion', 'telefono', 'nacimiento']
+    form = forms.ClienteForm
     icon = '<i class="material-icons">accessibility</i>'
 
     def get_form(self, request, obj=None, *args, **kwargs):
