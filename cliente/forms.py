@@ -2,14 +2,13 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 import models
+from exileui.widgets import DatePickerWidget
 from django.contrib.admin import widgets
 
 
-class ClienteForm(UserCreationForm):
+class ClienteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ClienteForm, self).__init__(*args, **kwargs)
-        self.fields['password1'].label = "Contraseña"
-        self.fields['password2'].label = "Confirmar contraseña"
         self.fields['email'].label = "Correo Electrtónico"
         self.fields['first_name'].label = "Nombre"
         self.fields['last_name'].label = "Apellidos"
@@ -21,8 +20,9 @@ class ClienteForm(UserCreationForm):
 
     class Meta:
         model = models.Ciente
-        fields = ['username', 'password1', 'password2', 'email', 'first_name',
-                  'last_name', 'identificacion', 'direccion', 'telefono', 'credito','nacimiento', 'imagen']
+        fields = ['first_name',
+                  'last_name', 'identificacion', 'credito', 'direccion', 'telefono','email', 'nacimiento', 'imagen']
+        exclude = ['username', 'password1', 'password2']
     # end class
 
     class Media:
@@ -42,6 +42,7 @@ class ClienteForm(UserCreationForm):
 class ClienteFormEdit(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ClienteFormEdit, self).__init__(*args, **kwargs)
+        self.autenticate = ''
         self.fields['email'].label = "Correo Electrtónico"
         self.fields['first_name'].label = "Nombre"
         self.fields['last_name'].label = "Apellidos"
@@ -53,9 +54,9 @@ class ClienteFormEdit(forms.ModelForm):
 
     class Meta:
         model = models.Ciente
-        exclude = ['password1', 'password2', ]
-        fields = ['username', 'email', 'first_name',
-                  'last_name', 'identificacion', 'direccion', 'telefono', 'nacimiento', 'imagen']
+        exclude = ['username', 'password1', 'password2']
+        fields = ['first_name',
+                  'last_name', 'identificacion', 'direccion','credito', 'telefono','email', 'nacimiento', 'imagen']
     # end class
 
     class Media:
@@ -66,6 +67,7 @@ class ClienteFormEdit(forms.ModelForm):
         recepcionista = super(ClienteFormEdit, self).save(commit)
         recepcionista.is_staff = True
         recepcionista.is_superuser = True
+        recepcionista.autenticate = self.autenticate
         recepcionista.save()
         return recepcionista
     # end def
