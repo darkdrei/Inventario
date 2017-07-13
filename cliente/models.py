@@ -6,6 +6,7 @@ from empleados import models as empleado
 
 # Create your models here.
 class Ciente(empleado.Persona):
+    credito = models.BooleanField(default=True)
     class Meta:
         verbose_name = "Cliente"
         verbose_name_plural = "Clientes"
