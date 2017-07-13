@@ -9,16 +9,16 @@ import models
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ['identificacion', 'email', 'first_name', 'last_name',
-                    'direccion', 'telefono', 'nacimiento']
+                    'direccion', 'telefono', 'credito','nacimiento']
     search_fields = ['identificacion', 'email', 'first_name', 'last_name',
                     'direccion', 'telefono', 'nacimiento']
     icon = '<i class="material-icons">accessibility</i>'
-    
+
     def get_form(self, request, obj=None, *args, **kwargs):
         if obj:
-            kwargs['form'] = forms.ProveedorFormEdit
+            kwargs['form'] = forms.ClienteFormEdit
         # end if
-        return super(ProveedorAdmin, self).get_form(request, obj, *args, **kwargs)
+        return super(ClienteAdmin, self).get_form(request, obj, *args, **kwargs)
     # end def
 #end class
 
