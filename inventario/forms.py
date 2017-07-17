@@ -6,12 +6,21 @@ from material import *
 class ArticuloForm(forms.ModelForm):
     class Meta:
         model = models.Activo
-        fields = ['codigo','nombre','descripcion','presentacion','tipo','existencias','negocio','adquisicion','precio_venta','rentabilidad','rentabilidad_ingreso']
-        exclude = ['estado']
+        fields = ['codigo','nombre','descripcion','presentacion','tipo','existencias','negocio','adquisicion','precio_venta','rentabilidad']
+        exclude = ['estado','rentabilidad_ingreso']
         widgets = {
             'descripcion': forms.Textarea,
         }
     #end class
+
+    def save(self, commit=True):
+        data = super(ArticuloForm, self).save(commit)
+        if data.adquisicion and data.precio_venta:
+            data.rentabilidad =  data.precio_venta / data.adquisicion - 1
+        #end if
+        data.save()
+        return data
+    #end def
 
     def clean(self):
         data = super(ArticuloForm, self).clean()
