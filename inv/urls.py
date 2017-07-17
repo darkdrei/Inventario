@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^$', empleado.Home.as_view()),
     url(r'^admin/', admin.site.urls),
     url(r'^nested_admin/', include('nested_admin.urls')),
+    url(r'^select2/', include('django_select2.urls')),
+    url(r'^inventario/', include('inventario.urls',namespace='inventario')),
 ]
