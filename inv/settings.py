@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'compra.apps.CompraConfig',
     'cliente.apps.ClienteConfig',
     'venta.apps.VentaConfig',
-    'proveedores.apps.ProveedoresConfig'
+    'proveedores.apps.ProveedoresConfig',
+    'django_select2',
+    'reportes'
 ]
 
 MIDDLEWARE = [
@@ -87,7 +89,7 @@ WSGI_APPLICATION = 'inv.wsgi.application'
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'inventario2',
+            'NAME': 'inventario_deploy',
             'USER': 'postgres',
             'PASSWORD': 'Exile*74522547',
             'HOST': '104.236.33.228',
