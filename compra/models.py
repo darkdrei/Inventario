@@ -4,10 +4,12 @@ from __future__ import unicode_literals
 from django.db import models
 from empleados import models as empleado
 from inventario import models as inventario
+from proveedores import models as proveedor
 # Create your models here.
 
 
 class Compra(models.Model):
+    proveedor = models.ForeignKey(proveedor.Proveedor)
     articulo = models.ForeignKey(inventario.Activo)
     cantidad = models.FloatField(default=0)
     valor_unitario = models.FloatField(default=0,verbose_name='Precio unitario')
@@ -25,10 +27,10 @@ class Compra(models.Model):
     # end class
 
     def __unicode__(self):
-        return u'%s %s' % (self.nombre)
+        return u'%s' % (self.articulo.nombre)
     # end def
 
     def __str__(self):
-        return u'%s %s' % (self.nombre)
+        return u'%s' % (self.articulo.nombre)
     # end def
 #end class
