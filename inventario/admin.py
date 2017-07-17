@@ -8,8 +8,9 @@ import forms
 
 
 class ActivoAdmin(admin.ModelAdmin):
-    list_display= ['codigo','nombre','presentacion','tipo','existencias','negocio','precio_venta']
+    list_display= ['codigo','nombre','tipo','existencias','negocio','precio_venta','rentabilidad']
     search_fields =['codigo','nombre','descripcion','presentacion__nombre','negocio__nombre']
+    list_filter=['negocio__nombre']
     form = forms.ArticuloForm
     icon = '<i class="material-icons">widgets</i>'
 
