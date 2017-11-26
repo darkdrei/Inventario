@@ -7,8 +7,8 @@ from django.db import models
 
 
 class UnidadNedocio(models.Model):
-    inicio = models.DateField(auto_now=True, auto_now_add=True)
-    fin = models.DateField(auto_now=True, auto_now_add=True)
+    inicio = models.DateField(auto_now_add=True)
+    fin = models.DateField(auto_now_add=True)
 
     def __unicode__(self):
         i = 0
