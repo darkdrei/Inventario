@@ -90,9 +90,9 @@ DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'inventario_deploy',
-            'USER': 'postgres',
-            'PASSWORD': 'Exile*74522547',
-            'HOST': '104.236.33.228',
+            'USER': 'epic',
+            'PASSWORD': '96522569*74522547',
+            'HOST': 'localhost',
             'POST': '5432'
     },
     'default2': {
